@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - claude/garage-portal-landing-GKgKy
   workflow_dispatch:
 
 permissions:

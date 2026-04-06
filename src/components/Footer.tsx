@@ -2,20 +2,20 @@ import { Wrench } from "lucide-react";
 
 const footerLinks = {
   Produit: [
-    { label: "Portail client", href: "#portail-client" },
-    { label: "Dashboard", href: "#dashboard" },
-    { label: "Automatisations", href: "#fonctionnalites" },
-    { label: "Tarifs", href: "#tarifs" },
+    { label: "Portail client", href: "/#portail-client" },
+    { label: "Dashboard", href: "/#dashboard" },
+    { label: "Automatisations", href: "/#fonctionnalites" },
+    { label: "Tarifs", href: "/#tarifs" },
   ],
   Ressources: [
-    { label: "Blog", href: "#" },
-    { label: "Documentation", href: "#" },
+    { label: "Blog", href: "/blog" },
+    { label: "Documentation", href: "/docs" },
     { label: "Changelog", href: "#" },
     { label: "Statut", href: "#" },
   ],
   Entreprise: [
-    { label: "À propos", href: "#" },
-    { label: "Contact", href: "#contact" },
+    { label: "À propos", href: "/about" },
+    { label: "Contact", href: "/#contact" },
     { label: "Partenaires", href: "#" },
   ],
   Légal: [
