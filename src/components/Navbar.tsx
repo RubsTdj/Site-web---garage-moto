@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { Menu, X, Wrench } from "lucide-react";
 
 const links = [
-  { href: "#portail-client", label: "Portail client" },
-  { href: "#dashboard", label: "Dashboard" },
-  { href: "#fonctionnalites", label: "Comment ça marche" },
-  { href: "#tarifs", label: "Tarifs" },
+  { href: "/#portail-client", label: "Portail client" },
+  { href: "/#dashboard", label: "Dashboard" },
+  { href: "/#fonctionnalites", label: "Comment ça marche" },
+  { href: "/#tarifs", label: "Tarifs" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Navbar() {
@@ -55,13 +56,13 @@ export default function Navbar() {
         {/* CTA desktop */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="#contact"
+            href="/login"
             className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
           >
             Connexion
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             className="text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg transition-colors"
           >
             Démo gratuite
@@ -92,7 +93,14 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/login"
+            onClick={() => setOpen(false)}
+            className="block text-sm font-medium text-slate-600 py-2.5 border-b border-slate-50"
+          >
+            Connexion
+          </a>
+          <a
+            href="/#contact"
             onClick={() => setOpen(false)}
             className="block text-sm font-semibold bg-slate-900 text-white text-center py-3 rounded-xl mt-3"
           >
