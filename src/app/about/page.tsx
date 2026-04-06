@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, Heart, Target, Users, Zap, Award, MapPin } from "lucide-react";
+import { ArrowRight, Heart, Target, Users, Zap, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "À propos – GarageOS",
@@ -228,13 +229,13 @@ export default function AboutPage() {
               GarageOS est une startup indépendante, sans investisseur extérieur à date.
               On croit en la croissance durable construite avec nos clients, pas contre eux.
             </p>
-            <a
+            <Link
               href="/blog"
               className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6 py-3 rounded-xl transition-all"
             >
               Lire notre blog
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </section>
       </main>

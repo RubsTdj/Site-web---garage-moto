@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Wrench } from "lucide-react";
 
 const footerLinks = {
@@ -32,14 +33,14 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <a href="#" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-slate-800 border border-white/10 rounded-lg flex items-center justify-center">
                 <Wrench className="w-4 h-4 text-orange-400" />
               </div>
               <span className="font-bold text-lg text-white">
                 Garage<span className="text-orange-500">OS</span>
               </span>
-            </a>
+            </Link>
             <p className="text-sm text-slate-500 leading-relaxed">
               Le système d&apos;exploitation de votre garage moto.
             </p>
@@ -54,12 +55,12 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map(({ label, href }) => (
                   <li key={label}>
-                    <a
+                    <Link
                       href={href}
                       className="text-sm text-slate-500 hover:text-slate-300 transition-colors"
                     >
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
