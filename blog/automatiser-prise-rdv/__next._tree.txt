@@ -1,2 +1,2 @@
-:HL["/Site-web---garage-moto/_next/static/chunks/0l5ezwon-htot.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"blog","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"automatiser-prise-rdv","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"RwyTRnqXUP_hN5UtajjDo"}
+:HL["/Site-web---garage-moto/_next/static/chunks/0c2wo8q9btdf6.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"blog","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"automatiser-prise-rdv","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"dBQdU_ZPhq1DcN1yI4EBb"}

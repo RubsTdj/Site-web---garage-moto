@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://rubstdj.github.io/Site-web---garage-moto/sitemap.xml
