@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Wrench } from "lucide-react";
 
 const links = [
@@ -14,6 +16,7 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -31,42 +34,49 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
             <Wrench className="w-4 h-4 text-orange-400" />
           </div>
           <span className="font-bold text-xl text-slate-900">
             Garage<span className="text-orange-500">OS</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const isActive = l.href === "/blog" && pathname.startsWith("/blog");
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`text-sm font-medium transition-colors ${
+                  isActive
+                    ? "text-orange-500"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* CTA desktop */}
         <div className="hidden md:flex items-center gap-3">
-          <a
+          <Link
             href="/login"
             className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
           >
             Connexion
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#contact"
             className="text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg transition-colors"
           >
             Démo gratuite
-          </a>
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -83,29 +93,29 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-1">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               className="block text-sm font-medium text-slate-700 hover:text-orange-500 py-2.5 border-b border-slate-50 last:border-0"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <a
+          <Link
             href="/login"
             onClick={() => setOpen(false)}
             className="block text-sm font-medium text-slate-600 py-2.5 border-b border-slate-50"
           >
             Connexion
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#contact"
             onClick={() => setOpen(false)}
             className="block text-sm font-semibold bg-slate-900 text-white text-center py-3 rounded-xl mt-3"
           >
             Demander une démo
-          </a>
+          </Link>
         </div>
       )}
     </header>

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -41,9 +43,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "GarageOS",
+    url: "https://rubstdj.github.io/Site-web---garage-moto",
+    description:
+      "GarageOS digitalise les garages moto : portail client, prise de RDV, gestion des factures et dashboard interne.",
+    areaServed: "FR",
+    sameAs: [],
+  };
+
   return (
     <html lang="fr" className="h-full antialiased">
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <Script
+          defer
+          data-domain="rubstdj.github.io/Site-web---garage-moto"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
+      </head>
+      <body className="min-h-full flex flex-col font-sans">
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   );
 }

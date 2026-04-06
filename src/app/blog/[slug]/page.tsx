@@ -114,10 +114,38 @@ export default async function BlogPostPage({ params }: Props) {
   const prev = articles[currentIndex - 1];
   const next = articles[currentIndex + 1];
 
+  const BASE = "https://rubstdj.github.io/Site-web---garage-moto";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    author: {
+      "@type": "Person",
+      name: article.author.name,
+      jobTitle: article.author.role,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "GarageOS",
+      url: BASE,
+    },
+    datePublished: article.date,
+    url: `${BASE}/blog/${article.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE}/blog/${article.slug}`,
+    },
+  };
+
   return (
     <>
       <Navbar />
       <main>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Hero */}
         <section className="pt-32 pb-12 bg-white">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
