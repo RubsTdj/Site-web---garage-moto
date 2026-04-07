@@ -1,4 +1,5 @@
 import { Star, Quote } from "lucide-react";
+import AnimateIn from "./AnimateIn";
 
 const testimonials = [
   {
@@ -29,7 +30,7 @@ export default function Testimonials() {
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <AnimateIn className="text-center mb-16">
           <p className="text-orange-500 font-semibold text-sm uppercase tracking-widest mb-3">
             Ils nous font confiance
           </p>
@@ -38,52 +39,43 @@ export default function Testimonials() {
           </h2>
           <div className="flex items-center justify-center gap-1 mt-4">
             {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className="w-5 h-5 text-orange-400 fill-orange-400"
-              />
+              <Star key={i} className="w-5 h-5 text-orange-400 fill-orange-400" />
             ))}
             <span className="ml-2 text-slate-600 font-semibold">4.9/5</span>
             <span className="text-slate-400 ml-1">sur 150+ avis</span>
           </div>
-        </div>
+        </AnimateIn>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map(({ name, role, avatar, rating, text }) => (
-            <div
-              key={name}
-              className="bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:shadow-md transition-shadow relative"
-            >
-              <Quote className="absolute top-5 right-5 w-8 h-8 text-orange-100 fill-orange-100" />
+          {testimonials.map(({ name, role, avatar, rating, text }, idx) => (
+            <AnimateIn key={name} delay={idx * 120} animation="scale-in">
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative h-full">
+                <Quote className="absolute top-5 right-5 w-8 h-8 text-orange-100 fill-orange-100" />
 
-              {/* Stars */}
-              <div className="flex gap-0.5 mb-4">
-                {[...Array(rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 text-orange-400 fill-orange-400"
-                  />
-                ))}
-              </div>
-
-              <p className="text-slate-700 leading-relaxed mb-6 text-sm">
-                &ldquo;{text}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                  {avatar}
+                {/* Stars */}
+                <div className="flex gap-0.5 mb-4">
+                  {[...Array(rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-orange-400 fill-orange-400" />
+                  ))}
                 </div>
-                <div>
-                  <div className="font-semibold text-slate-900 text-sm">
-                    {name}
+
+                <p className="text-slate-700 leading-relaxed mb-6 text-sm">
+                  &ldquo;{text}&rdquo;
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                    {avatar}
                   </div>
-                  <div className="text-xs text-slate-500">{role}</div>
+                  <div>
+                    <div className="font-semibold text-slate-900 text-sm">{name}</div>
+                    <div className="text-xs text-slate-500">{role}</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimateIn>
           ))}
         </div>
       </div>

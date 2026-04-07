@@ -34,7 +34,7 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
           <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
             <Wrench className="w-4 h-4 text-orange-400" />
           </div>
@@ -43,15 +43,15 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Desktop links — only on large screens */}
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {links.map((l) => {
             const isActive = l.href === "/blog" && pathname.startsWith("/blog");
             return (
               <Link
                 key={l.href}
                 href={l.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-colors whitespace-nowrap ${
                   isActive
                     ? "text-orange-500"
                     : "text-slate-600 hover:text-slate-900"
@@ -63,25 +63,25 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* CTA desktop */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* CTA — only on large screens */}
+        <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/login"
-            className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+            className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors whitespace-nowrap"
           >
             Connexion
           </Link>
           <Link
             href="/#contact"
-            className="text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg transition-colors"
+            className="text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
           >
             Démo gratuite
           </Link>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Hamburger — tablets & mobile (below lg) */}
         <button
-          className="md:hidden p-2 text-slate-700"
+          className="lg:hidden p-2 text-slate-700 rounded-lg hover:bg-slate-100 transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -89,15 +89,15 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile / Tablet menu */}
       {open && (
-        <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-1">
+        <div className="lg:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-1 shadow-lg">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block text-sm font-medium text-slate-700 hover:text-orange-500 py-2.5 border-b border-slate-50 last:border-0"
+              className="block text-sm font-medium text-slate-700 hover:text-orange-500 py-2.5 border-b border-slate-50 last:border-0 transition-colors"
             >
               {l.label}
             </Link>
@@ -105,16 +105,16 @@ export default function Navbar() {
           <Link
             href="/login"
             onClick={() => setOpen(false)}
-            className="block text-sm font-medium text-slate-600 py-2.5 border-b border-slate-50"
+            className="block text-sm font-medium text-slate-600 py-2.5 border-b border-slate-50 transition-colors"
           >
             Connexion
           </Link>
           <Link
             href="/#contact"
             onClick={() => setOpen(false)}
-            className="block text-sm font-semibold bg-slate-900 text-white text-center py-3 rounded-xl mt-3"
+            className="block text-sm font-semibold bg-slate-900 text-white text-center py-3 rounded-xl mt-3 hover:bg-slate-800 transition-colors"
           >
-            Demander une démo
+            Demander une démo gratuite
           </Link>
         </div>
       )}

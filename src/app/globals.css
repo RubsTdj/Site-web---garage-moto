@@ -31,3 +31,91 @@ body {
   background: #f97316;
   border-radius: 3px;
 }
+
+/* ── Keyframe animations ───────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes gradientX {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulseRing {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+@keyframes blobMove {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.97); }
+}
+
+/* ── Utility classes ───────────────────────────────────────── */
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradientX 6s ease infinite;
+}
+
+.animate-blob {
+  animation: blobMove 10s ease-in-out infinite;
+}
+
+.animate-pulse-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulseRing 1.8s ease-out infinite;
+}
+
+/* Hero load animations */
+.hero-fade-1 { animation: fadeInUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
+.hero-fade-2 { animation: fadeInUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.18s both; }
+.hero-fade-3 { animation: fadeInUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.30s both; }
+.hero-fade-4 { animation: fadeInUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.42s both; }
+.hero-fade-5 { animation: fadeInUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.54s both; }
+.hero-fade-6 { animation: fadeIn   0.9s cubic-bezier(0.16,1,0.3,1) 0.70s both; }

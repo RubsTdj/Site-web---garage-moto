@@ -1,3 +1,4 @@
+import AnimateIn from "./AnimateIn";
 import {
   CalendarCheck,
   FileText,
@@ -78,12 +79,12 @@ const features = [
 
 const colorStyles: Record<string, { bg: string; text: string; badge: string }> = {
   orange: { bg: "bg-orange-50", text: "text-orange-600", badge: "bg-orange-100 text-orange-700" },
-  blue: { bg: "bg-blue-50", text: "text-blue-600", badge: "bg-blue-100 text-blue-700" },
-  green: { bg: "bg-green-50", text: "text-green-600", badge: "bg-green-100 text-green-700" },
+  blue:   { bg: "bg-blue-50",   text: "text-blue-600",   badge: "bg-blue-100 text-blue-700" },
+  green:  { bg: "bg-green-50",  text: "text-green-600",  badge: "bg-green-100 text-green-700" },
   purple: { bg: "bg-purple-50", text: "text-purple-600", badge: "bg-purple-100 text-purple-700" },
-  rose: { bg: "bg-rose-50", text: "text-rose-600", badge: "bg-rose-100 text-rose-700" },
-  amber: { bg: "bg-amber-50", text: "text-amber-600", badge: "bg-amber-100 text-amber-700" },
-  teal: { bg: "bg-teal-50", text: "text-teal-600", badge: "bg-teal-100 text-teal-700" },
+  rose:   { bg: "bg-rose-50",   text: "text-rose-600",   badge: "bg-rose-100 text-rose-700" },
+  amber:  { bg: "bg-amber-50",  text: "text-amber-600",  badge: "bg-amber-100 text-amber-700" },
+  teal:   { bg: "bg-teal-50",   text: "text-teal-600",   badge: "bg-teal-100 text-teal-700" },
   indigo: { bg: "bg-indigo-50", text: "text-indigo-600", badge: "bg-indigo-100 text-indigo-700" },
 };
 
@@ -92,7 +93,7 @@ export default function FeaturesGrid() {
     <section id="fonctionnalites" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <AnimateIn className="text-center mb-16">
           <p className="text-orange-500 font-semibold text-sm uppercase tracking-widest mb-3">
             Tout ce qu&apos;il vous faut
           </p>
@@ -103,38 +104,33 @@ export default function FeaturesGrid() {
             Fini les 5 logiciels qui ne se parlent pas. GarageOS centralise tout
             ce dont vous avez besoin pour gérer votre garage moto au quotidien.
           </p>
-        </div>
+        </AnimateIn>
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map(({ icon: Icon, category, title, description, color }) => {
+          {features.map(({ icon: Icon, category, title, description, color }, idx) => {
             const styles = colorStyles[color];
             return (
-              <div
-                key={title}
-                className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-slate-300 hover:shadow-lg transition-all group cursor-default"
-              >
-                {/* Badge */}
-                <span
-                  className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-4 ${styles.badge}`}
-                >
-                  {category}
-                </span>
+              <AnimateIn key={title} delay={idx * 60}>
+                <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-slate-300 hover:shadow-lg transition-all group cursor-default h-full">
+                  {/* Badge */}
+                  <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-4 ${styles.badge}`}>
+                    {category}
+                  </span>
 
-                {/* Icon */}
-                <div
-                  className={`w-10 h-10 ${styles.bg} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
-                >
-                  <Icon className={`w-5 h-5 ${styles.text}`} />
+                  {/* Icon */}
+                  <div className={`w-10 h-10 ${styles.bg} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200`}>
+                    <Icon className={`w-5 h-5 ${styles.text}`} />
+                  </div>
+
+                  <h3 className="font-semibold text-slate-900 mb-2 text-sm leading-snug">
+                    {title}
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    {description}
+                  </p>
                 </div>
-
-                <h3 className="font-semibold text-slate-900 mb-2 text-sm leading-snug">
-                  {title}
-                </h3>
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  {description}
-                </p>
-              </div>
+              </AnimateIn>
             );
           })}
         </div>

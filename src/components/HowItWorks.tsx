@@ -1,4 +1,6 @@
 import { Database, Palette, Rocket, ArrowRight } from "lucide-react";
+import AnimateIn from "./AnimateIn";
+import Link from "next/link";
 
 const steps = [
   {
@@ -32,7 +34,7 @@ export default function HowItWorks() {
     <section id="fonctionnalites" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <AnimateIn className="text-center mb-16">
           <p className="text-orange-500 font-semibold text-sm uppercase tracking-widest mb-3">
             Mise en place
           </p>
@@ -43,52 +45,54 @@ export default function HowItWorks() {
             Notre équipe s&apos;occupe de tout. Vous n&apos;avez rien à
             configurer.
           </p>
-        </div>
+        </AnimateIn>
 
         {/* Steps */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {steps.map(({ number, icon: Icon, title, description, detail }, idx) => (
-            <div key={number} className="relative">
-              {/* Connector */}
-              {idx < steps.length - 1 && (
-                <div className="hidden lg:flex absolute top-8 left-[calc(100%_-_1rem)] w-8 items-center justify-center z-10">
-                  <ArrowRight className="w-5 h-5 text-slate-300" />
-                </div>
-              )}
-
-              <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-md transition-shadow h-full">
-                {/* Step indicator */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-orange-400" />
+            <AnimateIn key={number} delay={idx * 150} animation="fade-up">
+              <div className="relative h-full">
+                {/* Connector */}
+                {idx < steps.length - 1 && (
+                  <div className="hidden lg:flex absolute top-8 left-[calc(100%_-_1rem)] w-8 items-center justify-center z-10">
+                    <ArrowRight className="w-5 h-5 text-slate-300" />
                   </div>
-                  <span className="text-4xl font-black text-slate-100">{number}</span>
+                )}
+
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-full">
+                  {/* Step indicator */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-orange-400" />
+                    </div>
+                    <span className="text-4xl font-black text-slate-100">{number}</span>
+                  </div>
+
+                  <h3 className="font-bold text-slate-900 text-lg mb-3">{title}</h3>
+                  <p className="text-slate-500 leading-relaxed text-sm mb-4">{description}</p>
+
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-orange-50 text-orange-600 border border-orange-100 px-3 py-1.5 rounded-full">
+                    ✓ {detail}
+                  </span>
                 </div>
-
-                <h3 className="font-bold text-slate-900 text-lg mb-3">{title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm mb-4">{description}</p>
-
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-orange-50 text-orange-600 border border-orange-100 px-3 py-1.5 rounded-full">
-                  ✓ {detail}
-                </span>
               </div>
-            </div>
+            </AnimateIn>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-12 text-center">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-slate-900/20"
+        <AnimateIn delay={450} className="mt-12 text-center">
+          <Link
+            href="/#contact"
+            className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-slate-900/20 hover:-translate-y-0.5 duration-200"
           >
             Démarrer maintenant
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
           <p className="text-sm text-slate-400 mt-3">
             Migration incluse · Support dédié · Sans engagement
           </p>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

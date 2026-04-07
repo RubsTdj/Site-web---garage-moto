@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import AnimateIn from "./AnimateIn";
 
 const problems = [
   {
@@ -36,7 +37,7 @@ export default function ProblemSection() {
     <section className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <AnimateIn className="text-center mb-16">
           <p className="text-orange-500 font-semibold text-sm uppercase tracking-widest mb-3">
             Le quotidien sans GarageOS
           </p>
@@ -49,31 +50,30 @@ export default function ProblemSection() {
             <strong className="text-slate-700">3 heures par jour</strong> sur
             des tâches administratives qui pourraient être automatisées.
           </p>
-        </div>
+        </AnimateIn>
 
         {/* Problem cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {problems.map(({ emoji, title, description, time }) => (
-            <div
-              key={title}
-              className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-orange-200 hover:shadow-md transition-all group"
-            >
-              <div className="text-3xl mb-4">{emoji}</div>
-              <h3 className="font-semibold text-slate-900 mb-2 text-sm">
-                {title}
-              </h3>
-              <p className="text-sm text-slate-500 leading-relaxed mb-4">
-                {description}
-              </p>
-              <div className="inline-flex items-center gap-1.5 bg-red-50 border border-red-100 text-red-600 text-xs font-semibold px-2.5 py-1 rounded-full">
-                ⏱ {time}
+          {problems.map(({ emoji, title, description, time }, idx) => (
+            <AnimateIn key={title} delay={idx * 100}>
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-orange-200 hover:shadow-md transition-all group h-full">
+                <div className="text-3xl mb-4">{emoji}</div>
+                <h3 className="font-semibold text-slate-900 mb-2 text-sm">
+                  {title}
+                </h3>
+                <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                  {description}
+                </p>
+                <div className="inline-flex items-center gap-1.5 bg-red-50 border border-red-100 text-red-600 text-xs font-semibold px-2.5 py-1 rounded-full">
+                  ⏱ {time}
+                </div>
               </div>
-            </div>
+            </AnimateIn>
           ))}
         </div>
 
         {/* Arrow / transition */}
-        <div className="mt-12 text-center">
+        <AnimateIn delay={400} className="mt-12 text-center">
           <div className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700">
             <span className="text-slate-400">Tout ça</span>
             <ArrowRight className="w-4 h-4 text-orange-500" />
@@ -81,7 +81,7 @@ export default function ProblemSection() {
               automatisé avec GarageOS
             </span>
           </div>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );
