@@ -3,7 +3,7 @@
 3:I[94542,["/Site-web---garage-moto/_next/static/chunks/0mt8sjguztf7v.js","/Site-web---garage-moto/_next/static/chunks/0d3shmwh5_nmn.js","/Site-web---garage-moto/_next/static/chunks/09n3-k0_vqjzt.js"],"default"]
 6:I[97367,["/Site-web---garage-moto/_next/static/chunks/0mt8sjguztf7v.js","/Site-web---garage-moto/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Site-web---garage-moto/_next/static/chunks/09n3-k0_vqjzt.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"dBQdU_ZPhq1DcN1yI4EBb"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Site-web---garage-moto/_next/static/chunks/09n3-k0_vqjzt.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"1bDfmIQegLAmUE2DYqJCm"}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
